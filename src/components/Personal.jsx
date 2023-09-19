@@ -44,7 +44,10 @@ export default function Personal({ getName }) {
             name="address"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 p-2"
           />
-          <button className="mt-2" onClick={(e) => onSubmitHandler(e)}>
+          <button
+            className="mt-2 border border-gray-300 rounded-md w-1/2 m-auto"
+            onClick={(e) => onSubmitHandler(e)}
+          >
             Submit
           </button>
         </form>

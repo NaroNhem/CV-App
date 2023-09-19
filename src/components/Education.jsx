@@ -41,6 +41,12 @@ export default function Education() {
               </div>
             </div>
           </label>
+          <button
+            className="mt-2 border border-gray-300 rounded-md w-1/2 m-auto"
+            onClick={(e) => onSubmitHandler(e)}
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>
