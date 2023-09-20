@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Education() {
+export default function Education({ getSchoolInfo }) {
+  const [school, setSchool] = useState("");
+  const [title, setTitle] = useState("");
+  const [startDate, setStart] = useState("");
+  const [endDate, setEnd] = useState("");
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    getSchoolInfo(school, title, startDate, endDate);
+    console.log(dates);
+  };
   return (
     <div className=" h-1/3 ">
       <div className="w-full mx-2 my-2 p-2 border  flex flex-col pl-16 pr-16 rounded-xl bg-white py-4 pb-10 drop-shadow-lg">
@@ -11,6 +21,7 @@ export default function Education() {
             type="text"
             name="school"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow p-2"
+            onChange={(e) => setSchool(e.target.value)}
           />
 
           <label>Title of Study:</label>
@@ -18,6 +29,7 @@ export default function Education() {
             type="text"
             name="title"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow p-2"
+            onChange={(e) => setTitle(e.target.value)}
           />
 
           <label className="flex flex-col gap-3">
@@ -29,6 +41,7 @@ export default function Education() {
                   type="date"
                   name="schoolStart"
                   className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow w-full p-2"
+                  onChange={(e) => setStart(e.target.value)}
                 />
               </div>
               <div>
@@ -37,6 +50,7 @@ export default function Education() {
                   type="date"
                   name="schoolEnd"
                   className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow w-full p-2"
+                  onChange={(e) => setEnd(e.target.value)}
                 />
               </div>
             </div>

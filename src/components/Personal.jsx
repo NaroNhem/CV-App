@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
-export default function Personal({ getName }) {
+export default function Personal({ getInfo }) {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    getName(name);
+    getInfo(name, email, phone, address);
   };
 
   return (
@@ -30,6 +33,7 @@ export default function Personal({ getName }) {
             type="text"
             name="email"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 p-2"
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <label>Phone:</label>
@@ -37,12 +41,14 @@ export default function Personal({ getName }) {
             type="text"
             name="phone"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 p-2"
+            onChange={(e) => setPhone(e.target.value)}
           />
-          <label>Address:</label>
+          <label>Country</label>
           <input
             type="text"
             name="address"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 p-2"
+            onChange={(e) => setAddress(e.target.value)}
           />
           <button
             className="mt-2 border border-gray-300 rounded-md w-1/2 m-auto"
