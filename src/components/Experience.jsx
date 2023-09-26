@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 
-export default function Experience({ getExperienceInfo }) {
+export default function Experience({ handleOnSubmitExperience }) {
   const [company, setCompany] = useState("");
   const [position, setPosition] = useState("");
   const [startDate, setStart] = useState("");
   const [responsibiities, setResponsibilities] = useState("");
   const [endDate, setEnd] = useState("");
-
+  const [id, setId] = useState(0);
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    getExperienceInfo(company, position, responsibiities, startDate, endDate);
-    console.log(dates);
+    setId(id + 1);
+    handleOnSubmitExperience({
+      company,
+      position,
+      startDate,
+      responsibiities,
+      endDate,
+      id,
+    });
   };
+
   return (
     <div>
       <div className="w-full mx-2 my-2 p-2 border  flex flex-col pl-16 pr-16 rounded-xl bg-white py-4 pb-10 drop-shadow-lg">

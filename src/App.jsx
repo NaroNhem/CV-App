@@ -39,25 +39,19 @@ export default function App() {
   };
 
   //States of user input from Experience component
-  const [newCompany, setNewCompany] = useState("");
-  const [newPosition, setNewPosition] = useState("");
-  const [newResponsibilities, setNewResponsibilities] = useState("");
-  const [newWorkStart, setNewWorkStart] = useState("");
-  const [newWorkEnd, setNewWorkEnd] = useState("");
+  const [newExperience, setNewExperience] = useState([]);
 
-  //Function to set States for Experience data
-  const getExperienceInfo = (
-    company,
-    position,
-    responsibilities,
-    start,
-    end
-  ) => {
-    setNewCompany(company);
-    setNewPosition(position);
-    setNewResponsibilities(responsibilities);
-    setNewWorkStart(start);
-    setNewWorkEnd(end);
+  const handleOnSubmitExperience = (newExperienceInfo) => {
+    // {
+    //   companyName: 'google',
+    //   title: 'software engineer',
+    //   ....
+    // }
+
+    // newExperience = [];
+    const experienceInfo = [...newExperience, newExperienceInfo];
+    setNewExperience(experienceInfo);
+    console.log(experienceInfo);
   };
 
   return (
@@ -65,7 +59,7 @@ export default function App() {
       <div className="flex flex-col">
         <Personal getInfo={getInfo} />
         <Education getSchoolInfo={getSchoolInfo} />
-        <Experience getExperienceInfo={getExperienceInfo} />
+        <Experience handleOnSubmitExperience={handleOnSubmitExperience} />
       </div>
       <div className="">
         <Resume
@@ -79,12 +73,8 @@ export default function App() {
           newTitle={newTitle}
           newSchoolStart={newSchoolStart}
           newSchoolEnd={newSchoolEnd}
-          //Experience
-          newCompany={newCompany}
-          newPosition={newPosition}
-          newResponsibilities={newResponsibilities}
-          newWorkStart={newWorkStart}
-          newWorkEnd={newWorkEnd}
+          //Experience => Array of objects holding experiences
+          newExperience={newExperience}
         />
       </div>
     </div>
