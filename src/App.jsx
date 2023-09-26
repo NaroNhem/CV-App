@@ -38,24 +38,53 @@ export default function App() {
     setNewSchoolEnd(end);
   };
 
+  //States of user input from Experience component
+  const [newCompany, setNewCompany] = useState("");
+  const [newPosition, setNewPosition] = useState("");
+  const [newResponsibilities, setNewResponsibilities] = useState("");
+  const [newWorkStart, setNewWorkStart] = useState("");
+  const [newWorkEnd, setNewWorkEnd] = useState("");
+
+  //Function to set States for Experience data
+  const getExperienceInfo = (
+    company,
+    position,
+    responsibilities,
+    start,
+    end
+  ) => {
+    setNewCompany(company);
+    setNewPosition(position);
+    setNewResponsibilities(responsibilities);
+    setNewWorkStart(start);
+    setNewWorkEnd(end);
+  };
+
   return (
-    <div className="flex justify-around p-10">
+    <div className="xl:flex justify-around p-10 shrink-0">
       <div className="flex flex-col">
         <Personal getInfo={getInfo} />
         <Education getSchoolInfo={getSchoolInfo} />
-        <Experience />
+        <Experience getExperienceInfo={getExperienceInfo} />
       </div>
-      <div>
+      <div className="">
         <Resume
+          //Personal
           newName={newName}
           newEmail={newEmail}
           newPhone={newPhone}
           newAdd={newAdd}
-          //
+          // Education
           newSchool={newSchool}
           newTitle={newTitle}
           newSchoolStart={newSchoolStart}
           newSchoolEnd={newSchoolEnd}
+          //Experience
+          newCompany={newCompany}
+          newPosition={newPosition}
+          newResponsibilities={newResponsibilities}
+          newWorkStart={newWorkStart}
+          newWorkEnd={newWorkEnd}
         />
       </div>
     </div>

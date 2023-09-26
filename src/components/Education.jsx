@@ -40,7 +40,7 @@ export default function Education({ getSchoolInfo }) {
                 <input
                   type="date"
                   name="schoolStart"
-                  className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow w-full p-2"
+                  className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow w-full p-2 m"
                   onChange={(e) => setStart(e.target.value)}
                 />
               </div>

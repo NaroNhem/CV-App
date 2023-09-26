@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Experience() {
+export default function Experience({ getExperienceInfo }) {
+  const [company, setCompany] = useState("");
+  const [position, setPosition] = useState("");
+  const [startDate, setStart] = useState("");
+  const [responsibiities, setResponsibilities] = useState("");
+  const [endDate, setEnd] = useState("");
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    getExperienceInfo(company, position, responsibiities, startDate, endDate);
+    console.log(dates);
+  };
   return (
     <div>
       <div className="w-full mx-2 my-2 p-2 border  flex flex-col pl-16 pr-16 rounded-xl bg-white py-4 pb-10 drop-shadow-lg">
@@ -11,6 +22,7 @@ export default function Experience() {
             type="text"
             name="company"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow p-2"
+            onChange={(e) => setCompany(e.target.value)}
           />
 
           <label>Position:</label>
@@ -18,6 +30,7 @@ export default function Experience() {
             type="text"
             name="position"
             className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow p-2"
+            onChange={(e) => setPosition(e.target.value)}
           />
 
           <label>Responsibilities:</label>
@@ -25,6 +38,7 @@ export default function Experience() {
             type="text"
             name="responsibiities"
             className="border bg-[#e7e6e6] rounded ml-1 h-16 drop-shadow p-2"
+            onChange={(e) => setResponsibilities(e.target.value)}
           ></textarea>
 
           <label className="flex flex-col gap-3">
@@ -36,6 +50,7 @@ export default function Experience() {
                   type="date"
                   name="workStart"
                   className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow w-full p-2"
+                  onChange={(e) => setStart(e.target.value)}
                 />
               </div>
               <div>
@@ -44,6 +59,7 @@ export default function Experience() {
                   type="date"
                   name="workEnd"
                   className="border bg-[#e7e6e6] rounded ml-1 h-8 drop-shadow w-full p-2"
+                  onChange={(e) => setEnd(e.target.value)}
                 />
               </div>
             </div>
