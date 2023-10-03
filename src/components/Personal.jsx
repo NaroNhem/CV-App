@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 
-export default function Personal({ getInfo }) {
+export default function Personal({ handleOnSubmitPersonal }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [id, setId] = useState(0);
+  const [btnState, setBtnState] = useState(false);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    getInfo(name, email, phone, address);
+    setId(id + 1);
+    handleOnSubmitPersonal({
+      name,
+      email,
+      phone,
+      address,
+      id,
+    });
   };
 
   return (
@@ -50,12 +59,17 @@ export default function Personal({ getInfo }) {
             className="border bg-[#e7e6e6] rounded ml-1 h-8 p-2"
             onChange={(e) => setAddress(e.target.value)}
           />
-          <button
-            className="mt-2 border border-gray-300 rounded-md w-1/2 m-auto"
-            onClick={(e) => onSubmitHandler(e)}
-          >
-            Submit
-          </button>
+          {btnState == false ? (
+            <button
+              className="mt-2 border border-gray-300 rounded-md w-1/2 m-auto"
+              onClick={(e) => {
+                onSubmitHandler(e);
+                setBtnState(true);
+              }}
+            >
+              Submit
+            </button>
+          ) : null}
         </form>
       </div>
     </div>

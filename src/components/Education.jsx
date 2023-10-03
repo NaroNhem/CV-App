@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 
-export default function Education({ getSchoolInfo }) {
+export default function Education({ handleOnSubmitEducation }) {
   const [school, setSchool] = useState("");
   const [title, setTitle] = useState("");
   const [startDate, setStart] = useState("");
   const [endDate, setEnd] = useState("");
-
+  const [id, setId] = useState(0);
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    getSchoolInfo(school, title, startDate, endDate);
-    console.log(dates);
+    setId(id + 1);
+    handleOnSubmitEducation({
+      school,
+      title,
+      startDate,
+      endDate,
+      id,
+    });
   };
   return (
     <div className=" h-1/3 ">
